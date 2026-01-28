@@ -22,3 +22,34 @@ Q5. Dennis currently has access to 7 AWS accounts. Dennis recently moved from th
 
 Ans: Ensure that Dennis is removed all the AD groups, that are used in AWS SSO to allocate permissions in various AWS accounts.
 Removing the user from the AD group automatically removes their AWS access. In AWS SSO, we should always follow the best practice of allocating permissions to groups and not individual users.
+
+Q6. A third party vendor facilitating on-premises to cloud migration at your org, wants to have access to Transit Gateway to debug any connectivity scenarios. What is the best way to handle this?
+
+Ans: Give them "viewonly" permissions in the Shared Services Account.
+Right approach. Any change on Transit Gateway should be executed only by the Central Cloud team, as it could affect the connectivity for all the accounts.
+
+Q7. Jayden from Information Security team asks for elevated access in the Management Account as they want to manage the GuardDuty Service for all the accounts in the Organization. What is the right approach to handle this?
+
+Ans: Make the Security Tooling Account as delegated administrator for GuardDuty service, and let them manage it from that account.
+This is the correct approach. It allows Jayden to manage the service fully, and they can also use some of the related services like S3 etc. in the Security Tooling account.
+
+Q8. Which of these is not a mandatory AWS account that should be created initially in the Landing Zone?
+Security Tooling Account, Log Archive Account or Sandbox Account
+Ans: Sandbox Account
+Sandbox accounts are generally used to experiment with new things. These have lesser restrictions than other AWS accounts in the Organization. This can be skipped during initial Landing Zone creation. No functionality gets affected.
+
+Q9. What is the right time to set up MFA for the root user?
+
+Ans immediately after creation of a new AWS account
+Setting up MFA should be the first task right after creation of a new AWS account.
+
+Q10. What is the default retention period for logs in the Log Archive Account?
+
+Ans: forever
+Logs are generally stored in S3 buckets in Log Archive Account, and by default they are retained forever. The is no expiration period, unless you configure S3 lifecycle policies.
+
+Q11. What is the disadvantage of hosting multiple environments of an application in the same AWS account?
+
+Ans: IAM issue
+Granular IAM access cannot be achieved in many scenarios.
+
