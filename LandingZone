@@ -1,0 +1,24 @@
+Q1. An SCP is applied at the top level in your AWS Organizations to restrict the creation of "m5.8xlarge" EC2 instances. When Laura logged in to the Management account as the root user, they were able to create such an EC2 instance. What is the reason?
+
+Ans: because they created the instance in the Management account.
+SCPs do not affect the Management account, hence they are not applicable to any identity in that account.
+
+Q2. While creating OU, Steve made a mistake and specified an incorrect name. What are the possible issues with this?
+
+Ans: There are no issues.
+"OU name" is more like a label that can be edited. "OU id" is the unique identifier.
+
+Q3. A Business Unit Leader wants to see the cost reports for their 12 AWS accounts in one place. What's the easiest way to facilitate this?
+
+Ans: The person should use AWS Cost Explorer from the Management account.
+This is the easiest method to access cost reports of all the AWS accounts from a central portal.
+
+Q4. There are multiple types of resources created for a particular application in an AWS account. The team wants to apply a project-number tag on all of these resources. What is the easiest way to achieve this?
+
+Ans: Use the Tag Editor feature of AWS.
+ag Editor is an in-built feature of AWS that allows you to apply tags on multiple resource types in one shot.
+
+Q5. Dennis currently has access to 7 AWS accounts. Dennis recently moved from their current team to another team where AWS access is not required anymore. What is technically required to ensure Dennis' access is revoked from all the AWS accounts?
+
+Ans: Ensure that Dennis is removed all the AD groups, that are used in AWS SSO to allocate permissions in various AWS accounts.
+Removing the user from the AD group automatically removes their AWS access. In AWS SSO, we should always follow the best practice of allocating permissions to groups and not individual users.
